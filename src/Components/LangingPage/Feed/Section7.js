@@ -1,126 +1,108 @@
+import { Box, Typography } from "@mui/material";
 import React from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  CardActionArea,
-  CardMedia,
-  Divider,
-  CardActions,
-  Button,
-  Box,
-} from "@mui/material";
-import Carousel from "react-material-ui-carousel";
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import Sliders from "./Sliders.js";
 import Image1 from "../../Images/Section1.1.png";
-import PlaceIcon from "@mui/icons-material/Place";
-import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 
-const Section7 = () => {
+export default function Section7() {
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 1025 },
+      items: 3,
+    },
+    desktop: {
+      breakpoint: { max: 1024, min: 801 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 800, min: 465 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2,
+    },
+  };
+
   const Section7Img = [
     {
-      name: "abc",
+      id: 1,
       images: Image1,
-      desc: "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to Naviglio where you can enjoy the main night life in Barcelona.",
+      Desc: "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to Naviglio where you can enjoy the main night life in Barcelona.",
       Heading: "Southern Star Deccan Run 2023",
-      price: 889,
+      Price: 889,
       Location: "Campus,Pune",
     },
     {
-      name: "qwe",
+      id: 2,
       images: Image1,
-      desc: "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to Naviglio where you can enjoy the main night life in Barcelona.",
+      Desc: "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to Naviglio where you can enjoy the main night life in Barcelona.",
       Heading: "Southern Star Deccan Run 2023",
-      price: 889,
+      Price: 889,
       Location: "Campus,Pune",
     },
     {
-      name: "asd",
+      id: 3,
       images: Image1,
-      desc: "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to Naviglio where you can enjoy the main night life in Barcelona.",
+      Desc: "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to Naviglio where you can enjoy the main night life in Barcelona.",
       Heading: "Southern Star Deccan Run 2023",
-      price: 889,
+      Price: 889,
       Location: "Campus,Pune",
     },
     {
-      name: "zxc",
+      id: 4,
       images: Image1,
-      desc: "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to Naviglio where you can enjoy the main night life in Barcelona.",
+      Desc: "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to Naviglio where you can enjoy the main night life in Barcelona.",
       Heading: "Southern Star Deccan Run 2023",
-      price: 889,
+      Price: 889,
+      Location: "Campus,Pune",
+    },
+    {
+      id: 5,
+      images: Image1,
+      Desc: "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to Naviglio where you can enjoy the main night life in Barcelona.",
+      Heading: "Southern Star Deccan Run 2023",
+      Price: 889,
+      Location: "Campus,Pune",
+    },
+    {
+      id: 6,
+      images: Image1,
+      Desc: "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to Naviglio where you can enjoy the main night life in Barcelona.",
+      Heading: "Southern Star Deccan Run 2023",
+      Price: 889,
       Location: "Campus,Pune",
     },
   ];
 
-  return (
-    <Box
-      sx={{
-        justifyContent: "center",
-        alignItems: "center",
-        margin: 2,
-        padding: 2,
-      }}
-    >
-      <Box sx={{ margin: 2 }}>
-        <Typography variant="h4">Tours Events</Typography>
-        <Typography variant="body1">Lorem Ipsum sit dolor amet.</Typography>
-      </Box>
-      <Box>
-        <Carousel
-          autoPlay={false}
-          animation="slide"
-          indicators={true}
-          navButtonsAlwaysVisible={true}
-        >
-          {Section7Img.map((photo, index) => (
-            <Card
-              key={index}
-              sx={{
-                maxWidth: "350px",
-                maxHeight: "700px",
-                margin: 2,
-                marginLeft: 3,
-                display: "flex",
-                padding: "auto",
-                borderRadius: 4,
-              }}
-            >
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  src={photo.images}
-                  alt={photo.name}
-                  sx={{ width: "330px" }}
-                />
-                <CardContent>
-                  <Typography variant="h6">{photo.Heading}</Typography>
-                </CardContent>
-                <Divider />
-                <CardActions
-                  sx={{
-                    justifyContent: "space-between",
-                    m: "auto",
-                    alignItems: "center",
-                  }}
-                >
-                  <Button size="small">
-                    <Typography variant="h5">
-                      <CurrencyRupeeIcon />
-                      {photo.price}
-                    </Typography>
-                  </Button>
-                  <Button size="small">
-                    <PlaceIcon fontSize="small" />
-                    <Typography variant="body2">{photo.Location}</Typography>
-                  </Button>
-                </CardActions>
-              </CardActionArea>
-            </Card>
-          ))}
-        </Carousel>
-      </Box>
-    </Box>
-  );
-};
+  const slider = Section7Img.map((item) => (
+    <Sliders
+      key={item.id}
+      headers={item.Heading}
+      urls={item.images}
+      prices={item.Price}
+      locations={item.Location}
+    />
+  ));
 
-export default Section7;
+  return (
+    <>
+      <Box
+        sx={{
+          width: { xs: "78%", md: "90%" },
+          height: { xs: "400px", md: "490px" },
+          margin: { xs: 4, md: 6 },
+          flexDirection: "row",
+          justifyContent: "space-around",
+        }}
+      >
+        <Box sx={{ marginLeft: "45px" }}>
+          <Typography variant="h4">Tours Events</Typography>
+          <Typography variant="body1">Lorem Ipsum sit dolor amet.</Typography>
+        </Box>
+        <Carousel responsive={responsive}>{slider}</Carousel>
+      </Box>
+    </>
+  );
+}
